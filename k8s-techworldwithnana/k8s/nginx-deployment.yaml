@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:              #connecting services to deployments
+    app: nginx         #label matched selector of service
+spec:
+  replicas: 2
+  selector:            #connecting deployment to pods
+    matchLabels:
+      app: nginx
+  template:            #template blueprint
+    metadata:
+      labels:          #label matched selector of service
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.16
+        ports:
+        - containerPort: 80

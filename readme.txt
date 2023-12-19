@@ -69,3 +69,66 @@ brew install minikube
 kubectl
 minikube
 minikube start --vm-driver=hyperkit
+kubectl get nodes  //get status of nodes
+minikube status
+kubectl version
+
+//kubectl CLI: for configuring the minikube cluster
+//minikube CLI: for start up/deleting the cluster
+
+kubectl get pod
+kubectl create -h
+
+//Pod is the smallest unit
+
+//deployment - abstraction over Pods
+
+kubectl create deployment nginx-depl --image=nginx
+kubectl get deployment
+kubectl get pod
+
+//blueprint for creating Pods
+
+kubectl get replicaset 
+
+//replicaset is managing the replicas of a pod
+kubectl edit deployment nginx-depl
+    :q! không lưu và thoát
+    :w lưu
+    :q thoát
+    - image: nginx:1.16
+kubectl get deployment
+kubectl get pod  //id pod thay đổi
+kubectl logs nginx-depl-6bdcdf7f5-qtvtg  <-pod name
+kubectl create deployment mongoj-depl --image=mongo
+kubectl get pod
+kubectl logs mongoj-depl-66c4dbd6f9-d9x94
+
+kubectl describe pod mongoj-depl-66c4dbd6f9-d9x94
+
+kubectl exec -it mongoj-depl-66c4dbd6f9-d9x94 -- bin/bash
+# ls
+# exit
+kubectl get deployment
+kubectl get pod
+kubectl delete deployment mongoj-depl
+kubectl get pod
+
+kubectl delete deployment nginx-depl 
+kubectl get pod
+kubectl apply -f nginx-deployment.yaml
+touch nginx-deployment.yaml
+vim nginx-deployment.yaml
+    replicas: 1
+kubectl apply -f nginx-deployment.yaml
+kubectl get pod
+kubectl get deployment
+vim nginx-deployment.yaml
+    replicas: 2
+kubectl apply -f nginx-deployment.yaml
+
+// deployment manages a rs
+// replicaSet (rs) manages a pod
+// pod is an abstraction of container
+
+1:11:08
