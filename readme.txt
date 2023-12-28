@@ -224,7 +224,6 @@ sudo vim /etc/hosts
     192.168.64.3    dashboard.com
     :wq
 
-2:17:43
 //////
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
 kubectl proxy
